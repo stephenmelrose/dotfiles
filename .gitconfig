@@ -1,0 +1,16 @@
+[user]
+        name = Stephen Melrose
+        email = me@stephenmelrose.co.uk
+[alias]
+        diffc = diff --cached -w
+        pp = !git pull && git push
+        rh = !git reset HEAD --hard
+        rho = !git reset ORIG_HEAD --hard
+        tktm = !git pull && git merge origin/tkt-$1 --no-ff --no-commit && git status
+        tktco = !git pull && git checkout tkt-$1 && git status
+[color]
+        ui = auto
+[core]
+        excludesfile = ~/.gitignore
+[push]
+        default = current
