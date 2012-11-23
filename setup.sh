@@ -1,30 +1,39 @@
 #!/bin/bash
 
-dotfilesDir=$(pwd)
+sourceFolder="$(pwd)"
+destFolder="${HOME}"
 
-function linkDotfile {
-  dest="${HOME}/${1}"
+function linkFile {
+  sourceFile="${sourceFolder}/${1}"
+  destFile="${destFolder}/${1}"
   dateStr=$(date +%Y-%m-%d-%H%M)
 
-  if [ -h ~/${1} ]; then
+  if [ -h "${destFile}" ]; then
     # Existing symlink 
-    echo "Removing existing symlink: ${dest}"
-    rm ${dest} 
+    echo "Removing existing symlink: ${destFile}"
+    rm "${destFile}"
 
-  elif [ -f "${dest}" ]; then
+  elif [ -f "${destFile}" ]; then
     # Existing file
-    echo "Backing up existing file: ${dest}"
-    mv ${dest}{,.${dateStr}}
+    echo "Backing up existing file: ${destFile}"
+    mv "${destFile}"{,.${dateStr}}
 
-  elif [ -d "${dest}" ]; then
+  elif [ -d "${destFile}" ]; then
     # Existing dir
-    echo "Backing up existing dir: ${dest}"
-    mv ${dest}{,.${dateStr}}
+    echo "Backing up existing dir: ${destFile}"
+    mv "${destFile}"{,.${dateStr}}
   fi
 
-  echo "Creating new symlink: ${dest}"
-  ln -s ${dotfilesDir}/${1} ${dest}
+  echo "Creating new symlink: ${destFile}"
+  ln -s "${sourceFile}" "${destFile}"
 }
 
-linkDotfile .bashrc
-linkDotfile .gitconfig
+linkFile .bashrc
+linkFile .gitconfig
+
+sourceFolder="$(pwd)/sublime-text"
+destFolder="${HOME}/.config/sublime-text-2/Packages/User"
+
+linkFile "Package Control.sublime-settings"
+linkFile "Preferences.sublime-settings"
+linkFile "Solarized (Light).tmTheme"
