@@ -1,6 +1,7 @@
 {
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/Solarized (Light).tmTheme",
+	"default_line_ending": "unix",
 	"font_face": "Courier New",
 	"font_size": 9,
 	"highlight_modified_tabs": true,
