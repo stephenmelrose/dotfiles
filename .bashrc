@@ -59,9 +59,16 @@ ps1Host="${bldgrn}"
 ps1Path="${bldblu}"
 ps1Git="${bldred}"
 
+# Alter PS1 for lampdev01
+if [ `hostname | cut -b1-9` == "lampdev01" ]; then
+  ps1User="${bldylw}"
+  ps1Host="${bldylw}"
+fi
+
 # Alter name for root
 if [ "${UID}" -eq "0" ]; then 
-  ps1User="${bldred}" 
+  ps1User="${bldred}"
+  ps1Host="${bldred}" 
 fi
 
 # PS1
