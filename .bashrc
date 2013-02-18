@@ -62,17 +62,18 @@ ps1Git="${bldred}"
 # Alter PS1 for lampdev01
 if [ `hostname | cut -b1-9` == "lampdev01" ]; then
   ps1User="${bldylw}"
-  ps1Host="${bldylw}"
+  ps1Host=""
 fi
 
 # Alter name for root
 if [ "${UID}" -eq "0" ]; then 
-  ps1User="${bldred}"
-  ps1Host="${bldred}" 
+  ps1User="${bakred}${bldwht}"
+  ps1Host=""
+  ps1Path="${txtrst}${bldblu}"
 fi
 
 # PS1
-export PS1="${ps1User}\u${ps1Host}@\h ${ps1Path}\w${ps1Git}\$(gitPrompt)${txtrst} \$ "
+export PS1="${ps1User}\u${ps1Host}@\h${ps1Path} \w${ps1Git}\$(gitPrompt)${txtrst} \$ "
 
 # Shortcuts
 alias gits='git status'
