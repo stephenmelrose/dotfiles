@@ -77,6 +77,8 @@ export PS1="${ps1User}\u${ps1Host}@\h${ps1Path} \w${ps1Git}\$(gitPrompt)${txtrst
 
 # Shortcuts
 alias gits='git status'
+alias tarzip='tar -czf'
+alias tarunzip="tar -zxf"
 
 # Local settings
 if [ -f ~/.localrc ]; then 
