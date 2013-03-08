@@ -34,12 +34,14 @@ linkFile .gitconfig
 sourceFolder="$(pwd)/sublime-text"
 destFolder="${HOME}/.config/sublime-text-2/Packages/User"
 
+linkFile "Base File.sublime-settings"
 linkFile "Package Control.sublime-settings"
 linkFile "Preferences.sublime-settings"
 linkFile "Solarized (Light).tmTheme"
 
 destFolder="${HOME}/.config/sublime-text-3/Packages/User"
 
+linkFile "Base File.sublime-settings"
 linkFile "Package Control.sublime-settings"
 linkFile "Preferences.sublime-settings"
 linkFile "Solarized (Light).tmTheme"
