@@ -75,6 +75,9 @@ fi
 # PS1
 export PS1="${ps1User}\u${ps1Host}@\h${ps1Path} \w${ps1Git}\$(gitPrompt)${txtrst} \$ "
 
+# Path
+export PATH=$PATH:./node_modules/.bin
+
 # Shortcuts
 alias gits='git status'
 alias tarzip='tar -czf'
