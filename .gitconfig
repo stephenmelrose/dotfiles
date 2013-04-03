@@ -6,11 +6,12 @@
         pp = !git pull && git push
         rh = !git reset HEAD --hard
         rho = !git reset ORIG_HEAD --hard
-        tktm = !git pull && git merge origin/tkt-$1 --no-ff --no-commit && git status
-        tktco = !git pull && git checkout tkt-$1 && git status
+        tktm = !git pull && git merge origin/tkt-$1 --no-ff --no-commit
+        tktco = !git pull && git checkout tkt-$1
 [color]
         ui = auto
 [core]
+        editor = vim
         excludesfile = ~/.gitignore
 [push]
         default = current

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-sourceFolder="$(pwd)"
-destFolder="${HOME}"
-
 function linkFile {
   sourceFile="${sourceFolder}/${1}"
   destFile="${destFolder}/${1}"
@@ -28,12 +25,23 @@ function linkFile {
   ln -s "${sourceFile}" "${destFile}"
 }
 
+sourceFolder="$(pwd)"
+destFolder="${HOME}"
+
 linkFile .bashrc
 linkFile .gitconfig
 
 sourceFolder="$(pwd)/sublime-text"
 destFolder="${HOME}/.config/sublime-text-2/Packages/User"
 
+linkFile "Base File.sublime-settings"
+linkFile "Package Control.sublime-settings"
+linkFile "Preferences.sublime-settings"
+linkFile "Solarized (Light).tmTheme"
+
+destFolder="${HOME}/.config/sublime-text-3/Packages/User"
+
+linkFile "Base File.sublime-settings"
 linkFile "Package Control.sublime-settings"
 linkFile "Preferences.sublime-settings"
 linkFile "Solarized (Light).tmTheme"
