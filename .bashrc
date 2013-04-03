@@ -59,8 +59,8 @@ ps1Host="${bldgrn}"
 ps1Path="${bldblu}"
 ps1Git="${bldred}"
 
-# Alter PS1 for lampdev01
-if [ `hostname | cut -b1-9` == "lampdev01" ]; then
+# Alter PS1 for linodev1
+if [ `hostname | cut -b1-9` == "linodev1" ]; then
   ps1User="${bldylw}"
   ps1Host=""
 fi
@@ -76,6 +76,7 @@ fi
 export PS1="${ps1User}\u${ps1Host}@\h${ps1Path} \w${ps1Git}\$(gitPrompt)${txtrst} \$ "
 
 # Shortcuts
+alias composer="composer.phar"
 alias gits='git status'
 
 # Local settings
