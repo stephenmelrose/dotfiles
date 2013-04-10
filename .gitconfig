@@ -2,7 +2,7 @@
         name = Stephen Melrose
         email = me@stephenmelrose.co.uk
 [alias]
-        diffc = diff --cached -w
+        diffc = diff --cached --patience -w
         pp = !git pull && git push
         rh = !git reset HEAD --hard
         rho = !git reset ORIG_HEAD --hard
