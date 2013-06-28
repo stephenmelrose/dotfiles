@@ -1,15 +1,15 @@
 {
-	"auto_upgrade_last_run": null,
-	"installed_packages":
-	[
-		"ApacheConf.tmLanguage",
-		"CTags",
-		"Cucumber",
-		"DocBlockr",
-		"INI",
-		"Package Control",
-		"SideBarEnhancements",
-		"Theme - Soda",
-		"Xdebug"
-	]
+    "auto_upgrade_last_run": null,
+    "installed_packages":
+    [
+        "ApacheConf.tmLanguage",
+        "CTags",
+        "Cucumber",
+        "DocBlockr",
+        "INI",
+        "Package Control",
+        "SideBarEnhancements",
+        "Theme - Soda",
+        "Xdebug"
+    ]
 }
