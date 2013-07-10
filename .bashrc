@@ -13,6 +13,19 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
+# Path
+export PATH=$PATH:./node_modules/.bin
+
+# Shortcuts
+alias c="composer.phar"
+alias gits='git status'
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+alias tarzip='tar -czf'
+alias tarunzip="tar -zxf"
+
 # Stolen from Arch wiki
 txtblk='\[\e[0;30m\]' # Black - Regular
 txtred='\[\e[0;31m\]' # Red
@@ -46,7 +59,7 @@ bakblu='\[\e[44m\]'   # Blue
 bakpur='\[\e[45m\]'   # Purple
 bakcyn='\[\e[46m\]'   # Cyan
 bakwht='\[\e[47m\]'   # White
-txtrst='\[\e[0m\]'  # Text Reset
+txtrst='\[\e[0m\]'    # Text Reset
 
 # Shortcut for git_ps1
 function gitPrompt {
@@ -59,14 +72,14 @@ ps1Host="${bldgrn}"
 ps1Path="${bldblu}"
 ps1Git="${bldred}"
 
-# Alter PS1 for linodev1
+# Yellow for linodev1
 if [ `hostname | cut -b1-9` == "linodev1" ]; then
   ps1User="${bldylw}"
   ps1Host=""
 fi
 
-# Alter name for root
-if [ "${UID}" -eq "0" ]; then 
+# Reverse red for root
+if [ "${UID}" -eq "0" ]; then
   ps1User="${bakred}${bldwht}"
   ps1Host=""
   ps1Path="${txtrst}${bldblu}"
@@ -75,16 +88,7 @@ fi
 # PS1
 export PS1="${ps1User}\u${ps1Host}@\h${ps1Path} \w${ps1Git}\$(gitPrompt)${txtrst} \$ "
 
-# Path
-export PATH=$PATH:./node_modules/.bin
-
-# Shortcuts
-alias composer="composer.phar"
-alias gits='git status'
-alias tarzip='tar -czf'
-alias tarunzip="tar -zxf"
-
 # Local settings
-if [ -f ~/.localrc ]; then 
+if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
