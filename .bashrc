@@ -17,12 +17,12 @@ fi
 export PATH=$PATH:./node_modules/.bin
 
 # Shortcuts
-alias c="composer.phar"
-alias gits='git status'
-
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
+alias c="composer.phar"
+alias gits='git status'
+alias prettyjson='python -mjson.tool'
 alias tarzip='tar -czf'
 alias tarunzip="tar -zxf"
 
