@@ -548,7 +548,8 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#269186</string>
+				<!--string>#269186</string-->
+				<string>#268BD2</string>
 			</dict>
 		</dict>
 		<dict>
