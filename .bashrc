@@ -72,6 +72,12 @@ ps1Host="${bldgrn}"
 ps1Path="${bldblu}"
 ps1Git="${bldred}"
 
+# Purple for skybetdev
+if [ `hostname | cut -b1-9` == "skybetdev" ]; then
+  ps1User="${bldpur}"
+  ps1Host=""
+fi
+
 # Yellow for linodev1
 if [ `hostname | cut -b1-9` == "linodev1" ]; then
   ps1User="${bldylw}"
