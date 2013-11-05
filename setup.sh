@@ -6,7 +6,7 @@ function linkFile {
   dateStr=$(date +%Y-%m-%d-%H%M)
 
   if [ -h "${destFile}" ]; then
-    # Existing symlink 
+    # Existing symlink
     echo "Removing existing symlink: ${destFile}"
     rm "${destFile}"
 
@@ -32,18 +32,12 @@ linkFile .bashrc
 linkFile .gitconfig
 
 sourceFolder="$(pwd)/sublime-text"
-destFolder="${HOME}/.config/sublime-text-2/Packages/User"
-
-linkFile "Base File.sublime-settings"
-linkFile "Default (Linux).sublime-keymap"
-linkFile "Package Control.sublime-settings"
-linkFile "Preferences.sublime-settings"
-linkFile "Solarized (Light).tmTheme"
-
 destFolder="${HOME}/.config/sublime-text-3/Packages/User"
 
-linkFile "Base File.sublime-settings"
-linkFile "Default (Linux).sublime-keymap"
-linkFile "Package Control.sublime-settings"
-linkFile "Preferences.sublime-settings"
-linkFile "Solarized (Light).tmTheme"
+if [ -d "${destFolder}" ]; then
+  linkFile "Base File.sublime-settings"
+  linkFile "Default (Linux).sublime-keymap"
+  linkFile "Package Control.sublime-settings"
+  linkFile "Preferences.sublime-settings"
+  linkFile "Solarized (Light).tmTheme"
+fi
