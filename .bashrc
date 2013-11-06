@@ -10,91 +10,126 @@ shopt -s histappend
 
 # Enable bash completion in interactive shells
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-  . /etc/bash_completion
+    . /etc/bash_completion
 fi
 
 # Path
 export PATH=$PATH:./node_modules/.bin
 
-# Shortcuts
+# Override existing commands
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-alias c="composer.phar"
+# Shortcuts
+alias c="composer"
 alias gits='git status'
 alias prettyjson='python -mjson.tool'
 alias tarzip='tar -czf'
 alias tarunzip="tar -zxf"
 
-# Stolen from Arch wiki
-txtblk='\[\e[0;30m\]' # Black - Regular
-txtred='\[\e[0;31m\]' # Red
-txtgrn='\[\e[0;32m\]' # Green
-txtylw='\[\e[0;33m\]' # Yellow
-txtblu='\[\e[0;34m\]' # Blue
-txtpur='\[\e[0;35m\]' # Purple
-txtcyn='\[\e[0;36m\]' # Cyan
-txtwht='\[\e[0;37m\]' # White
-bldblk='\[\e[1;30m\]' # Black - Bold
-bldred='\[\e[1;31m\]' # Red
-bldgrn='\[\e[1;32m\]' # Green
-bldylw='\[\e[1;33m\]' # Yellow
-bldblu='\[\e[1;34m\]' # Blue
-bldpur='\[\e[1;35m\]' # Purple
-bldcyn='\[\e[1;36m\]' # Cyan
-bldwht='\[\e[1;37m\]' # White
-unkblk='\[\e[4;30m\]' # Black - Underline
-undred='\[\e[4;31m\]' # Red
-undgrn='\[\e[4;32m\]' # Green
-undylw='\[\e[4;33m\]' # Yellow
-undblu='\[\e[4;34m\]' # Blue
-undpur='\[\e[4;35m\]' # Purple
-undcyn='\[\e[4;36m\]' # Cyan
-undwht='\[\e[4;37m\]' # White
-bakblk='\[\e[40m\]'   # Black - Background
-bakred='\[\e[41m\]'   # Red
-badgrn='\[\e[42m\]'   # Green
-bakylw='\[\e[43m\]'   # Yellow
-bakblu='\[\e[44m\]'   # Blue
-bakpur='\[\e[45m\]'   # Purple
-bakcyn='\[\e[46m\]'   # Cyan
-bakwht='\[\e[47m\]'   # White
-txtrst='\[\e[0m\]'    # Text Reset
+# Using 256 colours based on
+# http://misc.flogisoft.com/bash/tip_colors_and_formatting
 
-# Shortcut for git_ps1
-function gitPrompt {
-  command -v __git_ps1 > /dev/null && __git_ps1
+# Colour constants
+reset=0
+bold=1
+
+# Generate a chained colour
+function clr {
+    local clr="${reset}"
+    for param in "$@"
+    do
+        local clr="${clr};${param}"
+    done
+    echo "\[\e[${clr}m\]"
 }
 
-# Init PS1 colours
-ps1User="${bldgrn}"
-ps1Host="${bldgrn}"
-ps1Path="${bldblu}"
-ps1Git="${bldred}"
+# Generate text colour
+function tclr {
+    if [ "${1}" != "" ]; then
+        echo "38;5;${1}"
+    fi
+}
 
-# Purple for skybetdev
-if [ `hostname | cut -b1-9` == "skybetdev" ]; then
-  ps1User="${bldpur}"
-  ps1Host=""
+# Generate background colour
+function bclr {
+    if [ "${1}" != "" ]; then
+        echo "48;5;${1}"
+    fi
+}
+
+# Generate a PS1 seperator
+sep="$(echo -e '\xee\x82\xb0')"
+sepThin="$(echo -e '\xee\x82\xb1')"
+function genPs1Sep {
+    local fromClr=${1}
+    local toClr=${2}
+    if [ "${fromClr}" != "${toClr}" ]; then
+        local sep=${sep}
+    else
+        local sep=${sepThin}
+        local fromClr=${3}
+    fi
+    local sepClr=$(clr $(tclr ${fromClr}) $(bclr ${toClr}))
+    echo "${sepClr}${sep}"
+}
+
+# User@Host colours (blue by default)
+hostTxt=254
+hostBg=25
+
+# Path colours
+pathTxt=254
+pathBg=236
+
+# Git colours
+gitTxt=227
+gitBg=240
+
+# End colours
+endTxt=${pathTxt}
+endBg=${pathBg}
+
+# Purple for Sky Vagrant VM
+if [ `hostname` == "skybetdev" ]; then
+    hostBg=133
 fi
 
-# Yellow for linodev1
-if [ `hostname | cut -b1-9` == "linodev1" ]; then
-  ps1User="${bldylw}"
-  ps1Host=""
+# Orange for linodev1
+if [ `hostname` == "linodev1" ]; then 166
+    hostTxt=240
+    hostBg=220
 fi
 
-# Reverse red for root
+# Red for root
 if [ "${UID}" -eq "0" ]; then
-  ps1User="${bakred}${bldwht}"
-  ps1Host=""
-  ps1Path="${txtrst}${bldblu}"
+    hostTxt=
+    hostBg=160
+    pathBg=88
+    endBg=${pathBg}
 fi
 
-# PS1
-export PS1="${ps1User}\u${ps1Host}@\h${ps1Path} \w${ps1Git}\$(gitPrompt)${txtrst} \$ "
+# Generate PS1 parts
+hostAndPath="$(clr ${bold} $(tclr ${hostTxt}) $(bclr ${hostBg})) \u@\h " # Host
+hostAndPath="${hostAndPath}$(genPs1Sep ${hostBg} ${pathBg} ${hostTxt})" # Separator
+hostAndPath="${hostAndPath}$(clr $(tclr ${pathTxt}) $(bclr ${pathBg})) \w " # Path
+gitStart="$(genPs1Sep ${pathBg} ${gitBg} ${pathTxt})$(clr ${bold} $(tclr ${gitTxt}) $(bclr ${gitBg}))"
+gitEnd=" $(genPs1Sep ${gitBg} ${endBg} ${gitTxt})"
+noGit="$(genPs1Sep ${pathBg} ${endBg} 243)"
+end="$(clr $(tclr ${endTxt}) $(bclr ${endBg})) \$ $(genPs1Sep ${endBg})$(clr ${reset}) "
+
+# Dynamic PS1
+function setPs1 {
+    local gitPs1=$(command -v __git_ps1 > /dev/null && __git_ps1)
+    if [ "${gitPs1}" != "" ]; then
+        export PS1="${hostAndPath}${gitStart}${gitPs1}${gitEnd}${end}"
+    else
+        export PS1="${hostAndPath}${noGit}${end}"
+    fi
+}
+export PROMPT_COMMAND="setPs1"
 
 # Local settings
 if [ -f ~/.localrc ]; then
-  source ~/.localrc
+    source ~/.localrc
 fi
