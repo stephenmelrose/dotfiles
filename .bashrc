@@ -80,11 +80,11 @@ hostBg=25
 
 # Path colours
 pathTxt=254
-pathBg=236
+pathBg=235
 
 # Git colours
 gitTxt=227
-gitBg=240
+gitBg=238
 
 # End colours
 endTxt=${pathTxt}
@@ -97,7 +97,7 @@ fi
 
 # Orange for linodev1
 if [ `hostname` == "linodev1" ]; then 166
-    hostTxt=240
+    hostTxt=237
     hostBg=220
 fi
 
@@ -106,6 +106,7 @@ if [ "${UID}" -eq "0" ]; then
     hostTxt=
     hostBg=160
     pathBg=88
+    gitBg=124
     endBg=${pathBg}
 fi
 
@@ -127,7 +128,7 @@ function setPs1 {
         export PS1="${hostAndPath}${noGit}${end}"
     fi
 }
-export PROMPT_COMMAND="setPs1"
+export PROMPT_COMMAND="history -a;setPs1"
 
 # Local settings
 if [ -f ~/.localrc ]; then
