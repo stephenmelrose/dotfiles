@@ -96,7 +96,7 @@ if [ `hostname` == "skybetdev" ]; then
 fi
 
 # Orange for linodev1
-if [ `hostname` == "linodev1" ]; then 166
+if [ `hostname` == "linodev1" ]; then
     hostTxt=237
     hostBg=220
 fi
