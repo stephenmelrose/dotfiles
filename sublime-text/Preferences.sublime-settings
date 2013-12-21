@@ -16,6 +16,7 @@
 		80
 	],
 	"scroll_speed": 3.0,
+	"show_encoding": true,
 	"soda_classic_tabs": true,
 	"theme": "Soda Light.sublime-theme",
 	"translate_tabs_to_spaces": true,
