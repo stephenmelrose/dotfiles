@@ -3,11 +3,7 @@
         email = me@stephenmelrose.co.uk
 [alias]
         diffc = diff --cached --patience -w
-        pp = !git pull && git push
-        rh = !git reset HEAD --hard
-        rho = !git reset ORIG_HEAD --hard
-        tktm = !git pull && git merge origin/tkt-$1 --no-ff --no-commit
-        tktco = !git pull && git checkout tkt-$1
+        rh = !git reset @{u} --hard
 [color]
         ui = auto
 [core]

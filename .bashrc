@@ -58,77 +58,33 @@ function bclr {
     fi
 }
 
-# Generate a PS1 seperator
-sep="$(echo -e '\xee\x82\xb0')"
-sepThin="$(echo -e '\xee\x82\xb1')"
-function genPs1Sep {
-    local fromClr=${1}
-    local toClr=${2}
-    if [ "${fromClr}" != "${toClr}" ]; then
-        local sep=${sep}
-    else
-        local sep=${sepThin}
-        local fromClr=${3}
-    fi
-    local sepClr=$(clr $(tclr ${fromClr}) $(bclr ${toClr}))
-    echo "${sepClr}${sep}"
-}
-
-# User@Host colours (blue by default)
-hostTxt=254
-hostBg=25
-
-# Path colours
-pathTxt=254
-pathBg=235
-
-# Git colours
-gitTxt=227
-gitBg=238
-
-# End colours
-endTxt=${pathTxt}
-endBg=${pathBg}
+# Set defaults
+host="$(clr ${bold} $(tclr 75))" # Blue
+path="$(clr ${bold} $(tclr 254))" # White
+git=$(clr ${bold} 33) # Yellow
 
 # Purple for Sky Vagrant VM
 if [ `hostname` == "skybetdev" ]; then
-    hostBg=133
+    host="$(clr ${bold} $(tclr 183))"
 fi
 
-# Orange for linodev1
+# Yellow for linodev1
 if [ `hostname` == "linodev1" ]; then
-    hostTxt=237
-    hostBg=220
+    host="$(clr ${bold} $(tclr 214))"
 fi
 
 # Red for root
 if [ "${UID}" -eq "0" ]; then
-    hostTxt=
-    hostBg=160
-    pathBg=88
-    gitBg=124
-    endBg=${pathBg}
+    host="$(clr ${bold} $(bclr 160))"
 fi
 
-# Generate PS1 parts
-hostAndPath="$(clr ${bold} $(tclr ${hostTxt}) $(bclr ${hostBg})) \u@\h " # Host
-hostAndPath="${hostAndPath}$(genPs1Sep ${hostBg} ${pathBg} ${hostTxt})" # Separator
-hostAndPath="${hostAndPath}$(clr $(tclr ${pathTxt}) $(bclr ${pathBg})) \w " # Path
-gitStart="$(genPs1Sep ${pathBg} ${gitBg} ${pathTxt})$(clr ${bold} $(tclr ${gitTxt}) $(bclr ${gitBg}))"
-gitEnd=" $(genPs1Sep ${gitBg} ${endBg} ${gitTxt})"
-noGit="$(genPs1Sep ${pathBg} ${endBg} 243)"
-end="$(clr $(tclr ${endTxt}) $(bclr ${endBg})) \$ $(genPs1Sep ${endBg})$(clr ${reset}) "
-
-# Dynamic PS1
-function setPs1 {
-    local gitPs1=$(command -v __git_ps1 > /dev/null && __git_ps1)
-    if [ "${gitPs1}" != "" ]; then
-        export PS1="${hostAndPath}${gitStart}${gitPs1}${gitEnd}${end}"
-    else
-        export PS1="${hostAndPath}${noGit}${end}"
-    fi
+# Shortcut for git_ps1
+function gitPrompt {
+    command -v __git_ps1 > /dev/null && __git_ps1
 }
-export PROMPT_COMMAND="history -a;setPs1"
+
+# PS1
+export PS1="${host}\u@\h${path} \w${git}\$(gitPrompt)$(clr) \$ "
 
 # Local settings
 if [ -f ~/.localrc ]; then
