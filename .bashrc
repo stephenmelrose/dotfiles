@@ -70,7 +70,7 @@ fi
 
 # Yellow for linodev1
 if [ `hostname` == "linodev1" ]; then
-    host="$(clr ${bold} $(tclr 214))"
+    host="$(clr ${bold} $(tclr 220))"
 fi
 
 # Red for root
