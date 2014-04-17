@@ -68,8 +68,8 @@ if [ `hostname` == "skybetdev" ]; then
     host="$(clr ${bold} $(tclr 183))"
 fi
 
-# Yellow for linodev1/digidev1
-if [ `hostname` == "linodev1" -o `hostname` == "digidev1" ]; then
+# Yellow for digidev1/gitlab
+if [ `hostname` == "digidev1" -o `hostname` == "gitlab" ]; then
     host="$(clr ${bold} $(tclr 220))"
 fi
 
