@@ -14,16 +14,14 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Path
-export PATH=$PATH:./node_modules/.bin
+export PATH=$PATH:./bin/:./node_modules/.bin:./vendor/bin/
 
 # Override existing commands
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 # Shortcuts
-alias c="composer"
 alias gits='git status'
-alias prettyjson='python -mjson.tool'
 alias tarzip='tar -czf'
 alias tarunzip="tar -zxf"
 
@@ -68,8 +66,8 @@ if [ `hostname` == "skybetdev" ]; then
     host="$(clr ${bold} $(tclr 183))"
 fi
 
-# Yellow for linodev1/digidev1
-if [ `hostname` == "linodev1" -o `hostname` == "digidev1" ]; then
+# Yellow for remote servers
+if [ `hostname | cut -b1-4` == "digi" ]; then
     host="$(clr ${bold} $(tclr 220))"
 fi
 
