@@ -34,10 +34,7 @@ linkFile .gitconfig
 sourceFolder="$(pwd)/sublime-text"
 destFolder="${HOME}/.config/sublime-text-3/Packages/User"
 
-if [ -d "${destFolder}" ]; then
-  linkFile "Base File.sublime-settings"
-  linkFile "Default (Linux).sublime-keymap"
-  linkFile "Package Control.sublime-settings"
-  linkFile "Preferences.sublime-settings"
-  linkFile "Solarized (Light).tmTheme"
-fi
+for i in ${sourceFolder}/*
+do
+  linkFile "${i##*/}"
+done
