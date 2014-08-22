@@ -1,4 +1,5 @@
 {
+	"atomic_save": false,
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/Solarized (Light).tmTheme",
 	"default_line_ending": "unix",
