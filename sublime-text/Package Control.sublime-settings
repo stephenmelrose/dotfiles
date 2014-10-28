@@ -3,6 +3,7 @@
 	"installed_packages":
 	[
 		"ApacheConf.tmLanguage",
+		"AutoPEP8",
 		"CTags",
 		"Cucumber",
 		"DocBlockr",
