@@ -4,8 +4,9 @@ shopt -s checkwinsize
 
 # Append to the history file, don't overwrite it
 HISTCONTROL=ignoredups:ignorespace
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=20000
+HISTFILESIZE=60000
+HISTTIMEFORMAT="[%F %T] "
 shopt -s histappend
 
 # Enable bash completion in interactive shells
