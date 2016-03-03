@@ -1,30 +1,26 @@
+# Set CLICOLOR if you want Ansi Colors in iTerm2
+export CLICOLOR=1
+
+# Set colors to match iTerm2 Terminal Colors
+export TERM=xterm-256color
+
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # Append to the history file, don't overwrite it
 HISTCONTROL=ignoredups:ignorespace
-HISTSIZE=20000
-HISTFILESIZE=60000
+HISTSIZE=
+HISTFILESIZE=
 HISTTIMEFORMAT="[%F %T] "
 shopt -s histappend
 
-# Enable bash completion in interactive shells
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-
 # Path
-export PATH=$PATH:./bin/:./node_modules/.bin:./vendor/bin/
-
-# Override existing commands
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS
 
 # Shortcuts
+alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/ (\1)/'"
 alias gits='git status'
-alias tarzip='tar -czf'
-alias tarunzip="tar -zxf"
 
 # Using 256 colours based on
 # http://misc.flogisoft.com/bash/tip_colors_and_formatting
@@ -62,28 +58,13 @@ host="$(clr ${bold} $(tclr 75))" # Blue
 path="$(clr ${bold} $(tclr 254))" # White
 git=$(clr ${bold} 33) # Yellow
 
-# Purple for Sky Vagrant VM
-if [ `hostname` == "skybetdev" ]; then
-    host="$(clr ${bold} $(tclr 183))"
-fi
-
-# Yellow for remote servers
-if [ `hostname | cut -b1-4` == "digi" ]; then
-    host="$(clr ${bold} $(tclr 220))"
-fi
-
-# Red for root
-if [ "${UID}" -eq "0" ]; then
-    host="$(clr ${bold} $(bclr 160))"
-fi
-
 # Shortcut for git_ps1
 function gitPrompt {
     command -v __git_ps1 > /dev/null && __git_ps1
 }
 
 # PS1
-export PS1="${host}\u@\h${path} \w${git}\$(gitPrompt)$(clr) \$ "
+export PS1="${host}▷${path} \w${git}\$(gitPrompt)$(clr) \$ "
 
 # Local settings
 if [ -f ~/.localrc ]; then
