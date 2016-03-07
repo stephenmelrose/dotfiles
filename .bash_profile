@@ -64,7 +64,7 @@ function gitPrompt {
 }
 
 # PS1
-export PS1="${host}▷${path} \w${git}\$(gitPrompt)$(clr) \$ "
+export PS1="${host}\u${path} \w${git}\$(gitPrompt)$(clr) \$ "
 
 # Local settings
 if [ -f ~/.localrc ]; then
