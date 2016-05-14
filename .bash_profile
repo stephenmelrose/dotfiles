@@ -17,9 +17,14 @@ shopt -s histappend
 
 # Path
 export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS
+export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
+
+# Override existing commands
+alias grep='grep --color=auto'
 
 # Shortcuts
 alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/ (\1)/'"
+alias cpgrep="grep --exclude-dir=\"storage\""
 alias gits='git status'
 
 # Using 256 colours based on

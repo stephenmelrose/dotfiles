@@ -1,28 +1,20 @@
 {
-	"atomic_save": false,
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/Solarized (Dark).tmTheme",
 	"default_line_ending": "unix",
 	"dictionary": "Packages/Language - English/en_GB.dic",
 	"findreplace_small": true,
 	"highlight_modified_tabs": true,
-	"ignored_packages":
-	[
-		"Vintage"
-	],
 	"indent_to_bracket": true,
 	"index_files": false,
 	"rulers":
 	[
 		80
 	],
-	"scroll_speed": 3.0,
 	"scroll_past_end": true,
+	"scroll_speed": 3.0,
 	"show_encoding": true,
-	"soda_classic_tabs": true,
-	"soda_folder_icons": true,
 	"tabs_small": true,
-	"theme": "Soda Light 3.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~?",
