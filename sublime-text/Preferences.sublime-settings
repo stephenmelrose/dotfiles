@@ -4,7 +4,12 @@
 	"default_line_ending": "unix",
 	"dictionary": "Packages/Language - English/en_GB.dic",
 	"findreplace_small": true,
+	"font_size": 12,
 	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
 	"indent_to_bracket": true,
 	"index_files": false,
 	"rulers":

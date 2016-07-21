@@ -6,6 +6,8 @@
 	],
 	"installed_packages":
 	[
+		"Color Highlighter",
+		"DocBlockr",
 		"Dockerfile Syntax Highlighting",
 		"Laravel Blade Highlighter",
 		"Package Control",
