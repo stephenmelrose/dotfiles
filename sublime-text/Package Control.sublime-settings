@@ -9,9 +9,14 @@
 		"Color Highlighter",
 		"DocBlockr",
 		"Dockerfile Syntax Highlighting",
+		"Git",
+		"Grails",
+		"INI",
 		"Laravel Blade Highlighter",
 		"LESS",
 		"Package Control",
-		"Pretty JSON"
+		"PHP Companion",
+		"Pretty JSON",
+		"Twig"
 	]
 }
