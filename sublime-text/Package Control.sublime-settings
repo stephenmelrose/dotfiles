@@ -15,9 +15,11 @@
 		"INI",
 		"Laravel Blade Highlighter",
 		"LESS",
+		"nginx",
 		"Package Control",
 		"PHP Companion",
 		"Pretty JSON",
-		"Twig"
+		"Twig",
+		"Varnish VCL"
 	]
 }
