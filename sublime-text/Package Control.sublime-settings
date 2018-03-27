@@ -6,7 +6,8 @@
 	],
 	"installed_packages":
 	[
-		"ApacheConf.tmLanguage",
+		"ApacheConf",
+		"Better CoffeeScript",
 		"Color Highlighter",
 		"DocBlockr",
 		"Dockerfile Syntax Highlighting",

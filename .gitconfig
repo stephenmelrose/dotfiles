@@ -1,6 +1,7 @@
 [user]
     name = Stephen Melrose
     email = me@stephenmelrose.co.uk
+    signingkey = C0BC1039CFDB99AB
 [alias]
     diffc = diff --cached --patience -w
     rh = !git reset @{u} --hard
