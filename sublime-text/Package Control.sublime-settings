@@ -21,6 +21,7 @@
 		"PHP Companion",
 		"Pretty JSON",
 		"Twig",
-		"Varnish VCL"
+		"Varnish VCL",
+		"Vue Syntax Highlight"
 	]
 }

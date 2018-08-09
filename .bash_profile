@@ -60,7 +60,6 @@ function bclr {
 # Set defaults
 host="$(clr ${bold} $(tclr 75))" # Blue
 path="$(clr ${bold} $(tclr 254))" # White
-git=$(clr ${bold} 33) # Yellow
 
 # Shortcut for git_ps1
 function gitPrompt {
@@ -68,7 +67,7 @@ function gitPrompt {
 }
 
 # PS1
-export PS1="${host}\u${path} \w${git}\$(gitPrompt)$(clr) \$ "
+export PS1="${host}\u${path} \w\[\e[1;0;33m\]\$(gitPrompt)$(clr) \$ "
 
 # Local settings
 if [ -f ~/.localrc ]; then
