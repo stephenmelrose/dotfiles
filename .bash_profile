@@ -16,6 +16,7 @@ HISTTIMEFORMAT="[%F %T] "
 shopt -s histappend
 
 # Path
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
 
 # Override existing commands
@@ -25,6 +26,9 @@ alias grep='grep --color=auto'
 alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/ (\1)/'"
 alias cpgrep="grep --exclude-dir=\"storage\""
 alias gits='git status'
+alias md5sum='md5 -r'
+alias rip='./docker/run-in-php'
+alias ria='./docker/run-in-ansible'
 
 # Using 256 colours based on
 # http://misc.flogisoft.com/bash/tip_colors_and_formatting
