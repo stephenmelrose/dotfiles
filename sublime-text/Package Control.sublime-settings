@@ -7,22 +7,17 @@
 	"installed_packages":
 	[
 		"ApacheConf",
-		"Better CoffeeScript",
-		"Color Highlighter",
 		"DocBlockr",
 		"Dockerfile Syntax Highlighting",
 		"DotENV",
 		"Git",
-		"Grails",
 		"INI",
 		"Laravel Blade Highlighter",
 		"LESS",
 		"nginx",
 		"Package Control",
-		"PHP Companion",
 		"Pretty JSON",
-		"Twig",
-		"Varnish VCL",
-		"Vue Syntax Highlight"
+		"TypeScript",
+		"Varnish VCL"
 	]
 }
