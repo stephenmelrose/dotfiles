@@ -1,4 +1,8 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export GPG_TTY=$(tty)
+
+# brew mysql-client
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 # Set CLICOLOR if you want Ansi Colors in iTerm2
 export CLICOLOR=1
@@ -14,6 +18,13 @@ shopt -s checkwinsize
 alias grep='grep --color=auto'
 
 # Shortcuts
+alias dc='docker-compose'
+alias dcu='docker-compose up -d --remove-orphans'
+alias dcr='docker-compose run --rm'
+alias dcs='docker-compose stop'
+alias dcrs='docker-compose restart'
+alias dcl='docker-compose logs'
+alias ecrlogin='aws ecr get-login-password --region us-east-1 --profile gpx | docker login --username AWS --password-stdin 054919245991.dkr.ecr.us-east-1.amazonaws.com'
 alias gits='git status'
 
 # Using 256 colours based on

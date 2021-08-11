@@ -3,15 +3,13 @@
 	"color_scheme": "Packages/User/Solarized (Dark).tmTheme",
 	"default_line_ending": "unix",
 	"dictionary": "Packages/Language - English/en_GB.dic",
-	"findreplace_small": true,
 	"font_size": 12,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
 	],
 	"indent_to_bracket": true,
-	"index_files": true,
 	"rulers":
 	[
 		80
@@ -19,10 +17,9 @@
 	"scroll_past_end": true,
 	"scroll_speed": 3.0,
 	"show_encoding": true,
-	"tabs_small": true,
-	"theme": "Default.sublime-theme",
+	"theme": "Default Dark.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~?",
-	"word_wrap": false
+	"word_wrap": false,
 }

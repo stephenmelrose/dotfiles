@@ -7,17 +7,22 @@
 	"installed_packages":
 	[
 		"ApacheConf",
+		"Babel",
 		"DocBlockr",
 		"Dockerfile Syntax Highlighting",
 		"DotENV",
 		"Git",
+		"GraphQL",
 		"INI",
 		"Laravel Blade Highlighter",
-		"LESS",
+		"MarkdownPreview",
 		"nginx",
 		"Package Control",
+		"Postgres PL pgSQL",
+		"PostgreSQL Syntax Highlighting",
 		"Pretty JSON",
+		"Terraform",
 		"TypeScript",
-		"Varnish VCL"
-	]
+		"Varnish VCL",
+	],
 }
