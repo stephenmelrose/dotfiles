@@ -32,7 +32,7 @@ linkFile .bash_profile
 linkFile .gitconfig
 
 sourceFolder="$(pwd)/sublime-text"
-destFolder="${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
+destFolder="${HOME}/Library/Application Support/Sublime Text/Packages/User"
 
 for i in ${sourceFolder}/*
 do

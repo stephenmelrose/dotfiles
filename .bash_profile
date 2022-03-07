@@ -1,4 +1,5 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export HISTSIZE=""
 export GPG_TTY=$(tty)
 
 # brew mysql-client
